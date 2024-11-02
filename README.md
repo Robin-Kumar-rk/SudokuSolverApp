@@ -54,12 +54,5 @@ Launch the app on your Android device.
 Fill in the Sudoku grid with known values (0 for empty cells).
 Click the "Solve" button to find the solution.
 Click the "Reset" button to clear the grid and input a new puzzle.
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
 
-Contributing
-Contributions to enhance the Sudoku Solver App or improve its features are welcome. Feel free to fork the repository and submit a pull request.
-
-Acknowledgments
-Thanks to the community for their insights on Sudoku algorithms and Android development that helped shape this project.
 
