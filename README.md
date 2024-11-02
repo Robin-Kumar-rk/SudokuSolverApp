@@ -37,8 +37,9 @@ Build and run the project from Android Studio.
 Input your Sudoku puzzle in the grid format.
 Tap the "Solve" button to find the solution.
 Use the "Reset" button to clear the grid and start over.
-Code Explanation
-Key Components
+
+- Code Explanation
+- Key Components
 resetSudoku(): Resets the Sudoku grid to its initial state, allowing users to enter a new puzzle.
 
 solveSudoku(): Initiates the solving process, checking the validity of the initial board and using a backtracking algorithm to find the solution.
@@ -49,7 +50,7 @@ checkValid(): Checks if a number can be placed in a specific cell without violat
 
 isValidInitialBoard(): Validates the initial board configuration to ensure that the puzzle can potentially be solved.
 
-Usage
+- Usage
 Launch the app on your Android device.
 Fill in the Sudoku grid with known values (0 for empty cells).
 Click the "Solve" button to find the solution.
