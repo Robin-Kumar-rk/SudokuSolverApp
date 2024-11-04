@@ -25,3 +25,17 @@ To get started with the Sudoku Solver App, clone this repository to your local m
 ```bash
 git clone https://github.com/Robin-Kumar-rk/SudokuSolverApp.git
 cd SudokuSolverApp
+```
+
+### 2. Open the Project
+
+Open the project in Android Studio. Ensure you have the latest version of Android Studio and the necessary SDK components installed.
+
+### Run the app
+1. Connect your Android device or start an emulator.
+2. Build and run the project from Android Studio.
+3. Input your Sudoku puzzle in the grid format.
+4. Tap the Solve button to find the solution.
+5. Use the Reset button to clear the grid and start over with a new puzzle.
+
+### Thank you for trying the Sudoku Solver App! Your feedback and contributions are welcome.
