@@ -7,7 +7,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
@@ -21,17 +20,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
-
 import androidx.compose.runtime.setValue
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -133,10 +129,17 @@ fun SudokuSolverApp(
             horizontalArrangement = Arrangement.SpaceEvenly // Space buttons evenly
         ) {
             Button(
-                onClick = { message.value = solveSudoku(gridState)},
+                onClick = {
+                    if (message.value != "Solved") {
+                        message.value = solveSudoku(gridState)
+                    } else {
+                        back(gridState)
+                        message.value = ""
+                    }
+                },
                 modifier = Modifier.weight(1f) // Equal weight for both buttons
             ) {
-                Text("Solve")
+                Text(text = if (message.value == "Solved") "Back" else "Solve")
             }
 
             Spacer(modifier = Modifier.width(16.dp)) // Space between buttons
@@ -167,8 +170,12 @@ fun SudokuCell(
 ) {
     Box(
         modifier = modifier1
-             // Set a fixed size or use dynamic size logic
-            .background(cellColor, ).border(1.dp, if (isSystemInDarkTheme()) Color.White else Color.Black) // Background color
+            // Set a fixed size or use dynamic size logic
+            .background(cellColor,)
+            .border(
+                1.dp,
+                if (isSystemInDarkTheme()) Color.White else Color.Black
+            ) // Background color
             .clickable(onClick = onCellClick), // Make it clickable
         contentAlignment = Alignment.Center // Center content inside the Box
     ) {

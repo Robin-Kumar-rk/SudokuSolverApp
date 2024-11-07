@@ -3,6 +3,8 @@ package com.example.sudokusolver
 
 import androidx.compose.runtime.MutableState
 
+val initialBoard = Array(9) { Array(9) {0} }
+
 fun resetSudoku(gridState: Array<Array<MutableState<Int>>>, message: MutableState<String>) {
     for (i in 0..8) {
         for (j in 0..8) {
@@ -12,11 +14,21 @@ fun resetSudoku(gridState: Array<Array<MutableState<Int>>>, message: MutableStat
     message.value = ""
 }
 
+
+
+fun back(gridState: Array<Array<MutableState<Int>>>) {
+    for (i in 0..8) {
+        for (j in 0..8) {
+            gridState[i][j].value = initialBoard[i][j]
+        }
+    }
+}
 fun solveSudoku(gridState: Array<Array<MutableState<Int>>>): String {
-    val temp = Array(9) { Array(9) {0} };
+    val temp = Array(9) { Array(9) {0} }
     for (i in 0..8) {
         for (j in 0..8) {
             temp[i][j] = gridState[i][j].value
+            initialBoard[i][j] = gridState[i][j].value
         }
     }
     if (!isValidInitialBoard(temp)) {
