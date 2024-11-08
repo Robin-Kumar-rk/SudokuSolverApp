@@ -32,6 +32,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -86,7 +87,11 @@ fun SudokuSolverApp(
                     cellColor,
                     Modifier
                         .weight(1f)
-                        .aspectRatio(1f)
+                        .aspectRatio(1f).border(
+                            1.dp,
+                            if (isSystemInDarkTheme()) Color.White else Color.Black,
+                            RoundedCornerShape(16.dp)
+                        ).clip(RoundedCornerShape(16.dp))
                 )  // Adjusted weight to 1f
             }
         }
@@ -95,7 +100,11 @@ fun SudokuSolverApp(
             number = -1,
             onCellClick = { choice = 0 },
             cellColor = if (choice == 0) Color(0xFFB90622) else Color(0xFFEEB787),
-            modifier1 = Modifier.height(40.dp),
+            modifier1 = Modifier.height(40.dp).border(
+                1.dp,
+                if (isSystemInDarkTheme()) Color.White else Color.Black,
+                RoundedCornerShape(16.dp)
+            ).clip(RoundedCornerShape(16.dp)),
             modifier2 = Modifier.padding(8.dp)
         )
         Spacer(modifier = Modifier.height(16.dp))
@@ -116,7 +125,10 @@ fun SudokuSolverApp(
                         getCellColor(i, j),
                         Modifier
                             .weight(1f)
-                            .aspectRatio(1f)
+                            .aspectRatio(1f).border(
+                                1.dp,
+                                if (isSystemInDarkTheme()) Color.White else Color.Black
+                            )
                     )  // Adjusted weight to 1f
                 }
             }
@@ -172,10 +184,7 @@ fun SudokuCell(
         modifier = modifier1
             // Set a fixed size or use dynamic size logic
             .background(cellColor,)
-            .border(
-                1.dp,
-                if (isSystemInDarkTheme()) Color.White else Color.Black
-            ) // Background color
+             // Background color
             .clickable(onClick = onCellClick), // Make it clickable
         contentAlignment = Alignment.Center // Center content inside the Box
     ) {
